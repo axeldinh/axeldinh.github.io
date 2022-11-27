@@ -2,10 +2,11 @@
 layout: default
 modal-id: 1
 date: 2014-07-18
-img: cabin.png
+img: road_segmentation/29_overlay.png
+title: Road Segmentation
 alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
-category: Web Development
-description: Use this area of the page to describe your project.
+project-date: Automn 2020
+course: Machine Learning - CS 433
+subject: Computer Vision
+description: Class project for the course CS 433 - Machine Learning at EPFL. The goal of this project was to segment roads satellite images. We used a U-Net architecture and tested different loss functions and data augmentation techniques.
 ---

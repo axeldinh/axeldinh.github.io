@@ -35,6 +35,16 @@
                 <strong>{{ post.category }}</strong>
               </li>
               {% endif %}
+              {% if post.subject %}
+              <li>Subject:
+                <strong>{{ post.subject }}</strong>
+              </li>
+              {% endif %}
+              {% if post.course %}
+              <li>Course:
+                <strong>{{ post.course }}</strong>
+              </li>
+              {% endif %}
             </ul>
             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>
               Close</button>
