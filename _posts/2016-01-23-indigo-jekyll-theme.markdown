@@ -1,34 +1,26 @@
 ---
-title: ":ramen: Indigo, minimalist jekyll theme"
+title: "Road Segmentation on Satellite Images"
 layout: post
-date: 2016-01-23 22:10
-tag: jekyll
-image: https://sergiokopplin.github.io/indigo/assets/images/jekyll-logo-light-solid.png
+date: 2020-11-01 00:00
+tag: Computer Vision
+image: /assets/projects/road_segm/overlay.png
 headerImage: true
 projects: true
 hidden: true # don't count this post in blog pagination
-description: "This is a simple and minimalist template for Jekyll for those who likes to eat noodles."
+description: "Class project for the course 'Machine Learning' at EPFL. We implemented a deep learning model for road segmentation on satellite images."
 category: project
-author: johndoe
+author: axeldinh
 externalLink: false
+github: https://github.com/axeldinh/ML-Road-Segmentation-Project
 ---
 
-![Screenshot](https://raw.githubusercontent.com/sergiokopplin/indigo/gh-pages/assets/screen-shot.png)
+This is a class project for the course 'Machine Learning' at EPFL which took form as an [AIcrowd](https://www.aicrowd.com/challenges/epfl-ml-road-segmentation) chalenge. The project was done in groups of 3 students.
 
-Example of project - Indigo Minimalist Jekyll Template - [Demo](https://sergiokopplin.github.io/indigo/). This is a simple and minimalist template for Jekyll for those who likes to eat noodles.
+The goal was to implement a deep learning model that could detect roads out of satellite images. The dataset used for training and testing the model was provided by the course, it contained
+100 images of size 400x400 pixels for training and 50 images of size 608x608 for testing.
 
----
+![Unet](/assets/projects/road_segm/unet.png)
 
-What has inside?
+Using a UNet architecture, along with an appropriate loss function, we were able to achieve an F1 score of 0.908 on the test set, leading us to the 4th place of the leaderboard.
 
-- Gulp
-- BrowserSync
-- Stylus
-- SVG
-- No JS
-- [98/100](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fsergiokopplin.github.io%2Findigo%2F)
-
----
-
-[Check it out](https://sergiokopplin.github.io/indigo/) here.
-If you need some help, just [tell me](https://github.com/sergiokopplin/indigo/issues).
+![Segmentation](/assets/projects/road_segm/pipeline.png)
