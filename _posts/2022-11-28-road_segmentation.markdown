@@ -12,6 +12,7 @@ category: project
 author: axeldinh
 externalLink: false
 github: https://github.com/axeldinh/ML-Road-Segmentation-Project
+icon: /assets/projects/road_segm/icon.png
 ---
 
 This is a class project for the course 'Machine Learning' at EPFL which took form as an [AIcrowd](https://www.aicrowd.com/challenges/epfl-ml-road-segmentation) chalenge. The project was done in groups of 3 students.

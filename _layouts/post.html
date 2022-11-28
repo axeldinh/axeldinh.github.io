@@ -9,7 +9,7 @@ layout: page
 <h1 class="title">{{ page.title }}</h1>
 
 <span class="date">
-    <time datetime="{{ page.date | date:"%d-%m-%Y" }}">{{ page.date | date: "%A. %B, %Y" }}</time>
+    <time datetime="{{ page.date | date:"%d-%m-%Y" }}">{{ page.date | date: "%B, %Y" }}</time>
     {% if site.read-time %} - {% include read-time.html %}{% endif %}
 </span>
 
@@ -24,7 +24,7 @@ layout: page
 {% if page.github %}
     <center>
         <div class="github-link">
-            <a class="link" data-title="{{ page.github }}" href="{{ page.github }}" target="_blank"  rel="noopener">
+            <a class="link" data-title="{{ page.github }}" href="{{ page.github }}" target="_blank"  rel="noopener" style="color:black">
                 <i class="fa-brands fa-github" style="font-size:36px"></i>
             </a>
         </div>

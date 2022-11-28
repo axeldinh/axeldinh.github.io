@@ -4,42 +4,35 @@ layout: page
 ---
 ![Profile Image]({% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %})
 
-<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+My name is Axel, I am a Master Student studying Computational Science and Engineering at 
+<a href="https://www.epfl.ch/"><u>EPFL</u></a> and I am highly interested in Deep Learning
+and its many applications.Graduate in Mathematics, I am not scared of theoretical problems,
+such as differential equations or numerical methods.
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p> I am currently working on a project about Deep Learning on MRI segmentation at EPFL's <a href="https://www.epfl.ch/labs/cvlab/"><u>Computer Vision Lab</u></a>. 
+As this project will end on March 2022, I am looking for a new challenge. If my profile picked your interest, 
+do not hesitate to contact me! </p>
 
 <h2>Skills</h2>
 
 <ul class="skill-list">
-	<li>HTML - Jade - Haml - Erb</li>
-	<li>Responsive (Mobile First)</li>
-	<li>CSS (Stylus, Sass, Less)</li>
-	<li>Css Frameworks (Bootstrap, Foundation)</li>
-	<li>Javascript (Design Patterns, Testes)</li>
-	<li>AngularJS - ReactJS</li>
-	<li>Grunt - Gulp - Yeoman</li>
+	<li>Pytorch</li>
+	<li>Pandas</li>
+	<li>Scikit-Learn</li>
+	<li>Slurm</li>
 	<li>Git</li>
-	<li>PHP</li>
-	<li>Python</li>
-	<li>MySQL - MongoDB</li>
-	<li>Scrum and Kanban</li>
-	<li>TDD e Continuous Integration</li>
+	<li>C++</li>
+	<li>Matlab</li>
+	<li>LaTex</li>
+	<li>Test-Driven Developpement</li>
 </ul>
 
 <h2>Projects</h2>
 
 <ul>
-	<li><a href="https://github.com/">Lorem Lorem</a></li>
-	<li><a href="https://github.com/">Ipsum Dolor</a></li>
-	<li><a href="https://github.com/">Dolor Lorem</a></li>
+{% for post in site.posts %}
+	{% if post.projects %}
+		<li> <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> </li>
+	{% endif %}
+{% endfor %}
 </ul>
