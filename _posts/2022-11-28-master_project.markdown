@@ -3,7 +3,7 @@ title: "Motion Correction in Cardiac Magnetic Resonance Imaging"
 layout: post
 date: 2022-10-01 00:00
 tag: Computer Vision
-image: /assets/projects/road_segm/overlay.png
+image: /assets/projects/master_project/overlay.png
 headerImage: true
 projects: true
 hidden: true # don't count this post in blog pagination
