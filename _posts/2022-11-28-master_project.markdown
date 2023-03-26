@@ -7,20 +7,28 @@ image: /assets/projects/master_project/icon.png
 headerImage: true
 projects: true
 hidden: true # don't count this post in blog pagination
-description: "Class project for the course 'Machine Learning' at EPFL. We implemented a deep learning model for road segmentation on satellite images."
+description: "Master thesis project at EPFL's Computer Vision Lab. We implemented a post-processing model for motion correction in cardiac MRI."
 category: project
 author: axeldinh
 externalLink: false
 icon: /assets/projects/master_project/icon.png
 ---
 
-This is a class project for the course 'Machine Learning' at EPFL which took form as an [AIcrowd](https://www.aicrowd.com/challenges/epfl-ml-road-segmentation) chalenge. The project was done in groups of 3 students.
+This is my final project for the Master in Computational Science and Engineering at EPFL. The goal here is to implement a post-processing 
+algorithm to make true motion correction on cardiac MRI images. The 
+anonymized dataset used for training and testing the model was provided by the [CHUV](https://www.chuv.ch/fr/chuv-home). For confidentiality reasons, the repository is private and the methods will not be detailed here.
 
-The goal was to implement a deep learning model that could detect roads out of satellite images. The dataset used for training and testing the model was provided by the course, it contained
-100 images of size 400x400 pixels for training and 50 images of size 608x608 for testing.
+The project was divided into 2 main parts:
 
-![Unet](/assets/projects/road_segm/unet.png)
+- **Heart Segmentation**: The first step was to segment the heart's left ventricle out of the images. This was done using a U-Net architecture with a custom loss function. The model was trained on 200 images of size 204x272 pixels. The results were satisfactory, but due
+to the small siz of the dataset, the model was not able to generalize
+to new patients or to images coming from points to far away in the
+heart stack.
 
-Using a UNet architecture, along with an appropriate loss function, we were able to achieve an F1 score of 0.908 on the test set, leading us to the 4th place of the leaderboard.
+![Example Segmentation](/assets/projects/master_project/example_segment.png)
 
-![Segmentation](/assets/projects/road_segm/pipeline.png)
+- **Motion Correction**: Using the segmentation made in the first step, we could extract some well selected features describing the left ventricle. These features were then used to improve the quality of the final scans by applying true-plane motion correction. This part of the project did not require any training of deep learning models.
+
+By applying our motion correction algorithm, we could increase the quality of the final scans, reducing blurriness and removing ghosting on problematic scans. This can avoid the needs for repeated scans which are time-consuming and costly procedures but can also reduce the risk of misdiagnosis.
+
+![Example](/assets/projects/master_project/increase_quality.png)
