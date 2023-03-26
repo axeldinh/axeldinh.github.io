@@ -3,7 +3,7 @@ title: "Motion Correction in Cardiac Magnetic Resonance Imaging"
 layout: post
 date: 2022-10-01 00:00
 tag: Computer Vision
-image: /assets/projects/master_project/overlay.png
+image: /assets/projects/master_project/icon.png
 headerImage: true
 projects: true
 hidden: true # don't count this post in blog pagination
@@ -11,7 +11,7 @@ description: "Class project for the course 'Machine Learning' at EPFL. We implem
 category: project
 author: axeldinh
 externalLink: false
-icon: /assets/projects/road_segm/icon.png
+icon: /assets/projects/master_project/icon.png
 ---
 
 This is a class project for the course 'Machine Learning' at EPFL which took form as an [AIcrowd](https://www.aicrowd.com/challenges/epfl-ml-road-segmentation) chalenge. The project was done in groups of 3 students.
