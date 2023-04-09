@@ -18,7 +18,7 @@ dark-theme: auto
 # and specify source (external or local).
 resume: true
 resume-external: true
-resume-url: https://github.com/axeldinh/Resume/raw/master/resume.pdf
+resume-url: /assets/resume.pdf
 
 url: https://axeldinh.github.io
 # your url: https://USERNAME.github.io
