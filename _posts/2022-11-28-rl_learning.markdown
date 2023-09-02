@@ -20,7 +20,19 @@ In this project, I developed a small Reinforcement Learning library in Python. T
 
 The [documentation](https://axeldinh.github.io/rlib/) of the code has been made using `Sphinx` and the library is available on [GitHub](https://github.com/axeldinh/rlib.git).
 
+Here is the content of this page:
+
+- [The Library](#the-library)
+- [Results](#results)
+  - [Q-Learning](#q-learning)
+  - [Deep Q-Learning](#deep-q-learning)
+  - [Evolution Strategy](#evolution-strategy)
+  - [Deep Deterministic Policy Gradient (DDPG)](#deep-deterministic-policy-gradient-ddpg)
+  - [Proximal Policy Optimization (PPO)](#proximal-policy-optimization-ppo)
+
 ## The Library
+
+<a name="library"></a>
 
 I wanted the library to be as simple as possible to use. The user only needs to define the environment and the agent, and then run the training loop on a [Gymnasium](https://gymnasium.farama.org/) environment, predefined in the library, or on a custom environment. For example, the following code trains a `PPO` agent on the `BipedalWalker-v3` environment, where a 2D character must learn to walk:
 
@@ -42,11 +54,16 @@ By doing so, the user can solely focus on the implementation of the environment.
 - `Deep Deterministic Policy Gradient (DDPG)`, where the policy is approximated by a neural network. Only handles continuous action spaces.
 - `Proximal Policy Optimization (PPO)`, where rather than optimizing the Q-function, the policy is optimized directly. Handles both discrete and continuous action spaces.
 
+
 ## Results
+
+<a name="results"></a>
 
 We display here some results obtained with the library.
 
 ### Q-Learning
+
+<a name="q-learning"></a>
 
 We trained a `Q-Learning` agent on the `MountainCar-v0` environment, where a car must learn to climb a hill. The agent was trained on 100,000 episodes and the following plot shows the evolution of the reward during training:
 
@@ -72,6 +89,8 @@ We can see a swirling curve on which the agent will move left or right. And that
 
 ### Deep Q-Learning
 
+<a name="deep-q-learning"></a>
+
 We trained a `Deep Q-Learning` agent on the `LunarLander-v2` environment, where a small spaceship must learn to learn on a landing area. It has been trained on 500,000 environment steps and the following plot shows the evolution of the reward and loss during training:
 
 |Test Rewards|Losses|
@@ -90,6 +109,8 @@ As it can be seen, before learning how to land, the agent learns how to hover to
 
 ### Evolution Strategy
 
+<a name="evolution-strategy"></a>
+
 Evolution Strategy is the simplest algorithm out of the ones implemented in the library. Indeed, the parameters do not need any backpropagation, and a simple estimation of the gradient is made to apply using perturbations of the parameters. Hence, it does not need any neural network and can be used on any environment, even those with a continuous action space.
 
 To show the results of this technique, I implemented my version of the Flappy Bird game, which can be found in the [library](https://github.com/axeldinh/rlib.git).
@@ -107,3 +128,49 @@ Here is a showcase of the training of the agent:
 |![Evolution Strategy Iteration 0](/assets/projects/rl_learning/evolution_strat/evolution_strat_iter0.gif)|![Evolution Strategy Iteration 100](/assets/projects/rl_learning/evolution_strat/evolution_strat_iter100.gif)|![Evolution Strategy Iteration 200](/assets/projects/rl_learning/evolution_strat/evolution_strat_iter200.gif)|
 
 We can see that at mid-training, the agent starts to learn how to through a pipe, this is then generalized to more pipes to maximize the score. The video's speed has been increased on the last iteration to show the agent's performance.
+
+### Deep Deterministic Policy Gradient (DDPG)
+
+<a name="ddpg"></a>
+
+I trained a `DDPG` agent on the `HalfCheetah-v4` environment, where a dog-like character must learn to walk forward.
+The agent was trained on 1,000 episodes on a CPU for 2 hours.
+The testing rewards look as such:
+
+![DDPG Rewards](/assets/projects/rl_learning/ddpg/mean_test_rewards.png)
+
+Here the agent suddenly learns how to walk after around 1,200 episodes, and the reward does not increase much after that. This shows that a subtle change in the agent's behavior has led to a huge improvement in the reward, but that this behavior cannot be much more optimized.
+
+The videos of the agent demonstrate this:
+
+|Iteration 0|Iteration 1,000|Iteration 1,200|Iteration 4,000|
+|:---:|:---:|:---:|:---:|
+|![DDPG Iteration 0](/assets/projects/rl_learning/ddpg/ddpg_iter0.gif)|![DDPG Iteration 1000](/assets/projects/rl_learning/ddpg/ddpg_iter1000.gif)|![DDPG Iteration 1200](/assets/projects/rl_learning/ddpg/ddpg_iter1200.gif)|![DDPG Iteration 4000](/assets/projects/rl_learning/ddpg/ddpg_iter4000.gif)|
+
+We can see that the method adopted by the agent at iteration 1,200 does evolve much until the end of the training. The agent learns to walk forward, but it does not learn to run, which would be much more efficient.
+Note that the videos have been accelerated to show the agent's performance, without acceleration, the agent looks like this:
+
+![DDPG Iteration 4000](/assets/projects/rl_learning/ddpg/ddpg_iter4000_real_time.gif)
+
+While it goes forward, it is not very efficient compared to state-of-the-art solutions, one can find an example [here](https://huggingface.co/sb3/ppo-HalfCheetah-v3)
+
+
+### Proximal Policy Optimization (PPO)
+
+<a name="ppo"></a>
+
+This algorithm is considered state-of-the-art in RL. It is a policy-based method, meaning that it optimizes the policy directly, rather than optimizing the Q-function. As I discovered when implementing it, a lot of hidden details are needed to make it work efficiently, I found those details on this [blog](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/).
+
+To show that my implementation is correct, I trained a `PPO` agent on the `BipedalWalker-v3` environment, where a 2D character must learn to walk. The agent was trained on around 16,000,000 environment steps on a CPU for 5 hours. This was possible thanks to the use of a parallelized environment, which allows to run multiple environments at the same time, and hence to collect more data.
+
+![PPO Rewards](/assets/projects/rl_learning/ppo/test_rewards.png)
+
+We can see that the agent starts learning how to walk after around 4,000,000 steps, and then improves its performance until it reaches a reward of around 250-300. This is not the maximum reward, but it is already a good performance, and it could be improved with more hyperparameter tuning.
+
+Here is what the agent looks like at different stages of the training:
+
+|Iteration 0|Iteration 200|Iteration 400|
+|:---:|:---:|:---:|
+|![PPO Iteration 0](/assets/projects/rl_learning/ppo/ppo_iter0.gif)|![PPO Iteration 200](/assets/projects/rl_learning/ppo/ppo_iter200.gif)|![PPO Iteration 400](/assets/projects/rl_learning/ppo/ppo_iter400.gif)|
+
+Here `iteration` denotes the number environment rollouts before updating the model, this is way it much lower than 16,000,000. We can see that the agent can already go forward at mid-training, by dragging its back knee. At the end of the training, it gets more efficient and its way of walking seems more natural.
