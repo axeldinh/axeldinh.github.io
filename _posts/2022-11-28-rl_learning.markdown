@@ -10,7 +10,7 @@ hidden: true # don't count this post in blog pagination
 description: "Implementation of a small RL library in Python. The goal was to learn the basics of RL by implementing the algorithms from scratch."
 category: project
 author: axeldinh
-externalLink: false 
+externalLink: false
 github: https://github.com/axeldinh/rlib.git
 icon: /assets/projects/rl_learning/icon.gif
 ---
@@ -85,13 +85,13 @@ Another interesting visualization is to plot the Q-function learned by the agent
 |:---:|:---:|:---:|
 |![q_learning_left](/assets/projects/rl_learning/qlearning/q_table_left.png)|![q_learning_nothing](/assets/projects/rl_learning/qlearning/q_table_nothing.png)|![q_learning_right](/assets/projects/rl_learning/qlearning/q_table_right.png)|
 
-We can see a swirling curve on which the agent will move left or right. And that doing nothing is not a good option, as no area of the plot has a high value. Note that the pixelated areas are states where the agent has never been, or not often enough to have a good estimate of the Q-function.
+We can see a swirling curve on which the agent will move left or right. And that doing nothing is not a good option, as no area of the plot has a high value. Note that the pixelated areas are states where the agent has never been, or not often enough, to have a good estimate of the Q-function.
 
 ### Deep Q-Learning
 
 <a name="deep-q-learning"></a>
 
-We trained a `Deep Q-Learning` agent on the `LunarLander-v2` environment, where a small spaceship must learn to learn on a landing area. It has been trained on 500,000 environment steps and the following plot shows the evolution of the reward and loss during training:
+We trained a `Deep Q-Learning` agent on the `LunarLander-v2` environment, where a small spaceship must learn how to land on a landing area. It has been trained on 500,000 environment steps and the following plot shows the evolution of the reward and loss during training:
 
 |Test Rewards|Losses|
 |:---:|:---:|
@@ -111,7 +111,7 @@ As it can be seen, before learning how to land, the agent learns how to hover to
 
 <a name="evolution-strategy"></a>
 
-Evolution Strategy is the simplest algorithm out of the ones implemented in the library. Indeed, the parameters do not need any backpropagation, and a simple estimation of the gradient is made to apply using perturbations of the parameters. Hence, it does not need any neural network and can be used on any environment, even those with a continuous action space.
+Evolution Strategy is the simplest algorithm out of the ones implemented in the library. Indeed, the parameters do not need any backpropagation, and a simple estimate of the gradient is computed using perturbations of the parameters. Hence, it does not need any neural network and can be used on any environment, even those with a continuous action space.
 
 To show the results of this technique, I implemented my version of the Flappy Bird game, which can be found in the [library](https://github.com/axeldinh/rlib.git).
 
@@ -134,7 +134,7 @@ We can see that at mid-training, the agent starts to learn how to through a pipe
 <a name="ddpg"></a>
 
 I trained a `DDPG` agent on the `HalfCheetah-v4` environment, where a dog-like character must learn to walk forward.
-The agent was trained on 1,000 episodes on a CPU for 2 hours.
+The agent was trained on 4,000 episodes on a CPU for 2 hours.
 The testing rewards look as such:
 
 ![DDPG Rewards](/assets/projects/rl_learning/ddpg/mean_test_rewards.png)
@@ -147,12 +147,12 @@ The videos of the agent demonstrate this:
 |:---:|:---:|:---:|:---:|
 |![DDPG Iteration 0](/assets/projects/rl_learning/ddpg/ddpg_iter0.gif)|![DDPG Iteration 1000](/assets/projects/rl_learning/ddpg/ddpg_iter1000.gif)|![DDPG Iteration 1200](/assets/projects/rl_learning/ddpg/ddpg_iter1200.gif)|![DDPG Iteration 4000](/assets/projects/rl_learning/ddpg/ddpg_iter4000.gif)|
 
-We can see that the method adopted by the agent at iteration 1,200 does evolve much until the end of the training. The agent learns to walk forward, but it does not learn to run, which would be much more efficient.
+We can see that the method adopted by the agent at iteration 1,200 does not evolve much until the end of the training. The agent learns to walk forward, but it does not learn to run, which would be much more efficient.
 Note that the videos have been accelerated to show the agent's performance, without acceleration, the agent looks like this:
 
 ![DDPG Iteration 4000](/assets/projects/rl_learning/ddpg/ddpg_iter4000_real_time.gif)
 
-While it goes forward, it is not very efficient compared to state-of-the-art solutions, one can find an example [here](https://huggingface.co/sb3/ppo-HalfCheetah-v3)
+While the agent goes forward, it is not very efficient compared to state-of-the-art solutions, one can find an example [here](https://huggingface.co/sb3/ppo-HalfCheetah-v3)
 
 
 ### Proximal Policy Optimization (PPO)
@@ -173,4 +173,4 @@ Here is what the agent looks like at different stages of the training:
 |:---:|:---:|:---:|
 |![PPO Iteration 0](/assets/projects/rl_learning/ppo/ppo_iter0.gif)|![PPO Iteration 200](/assets/projects/rl_learning/ppo/ppo_iter200.gif)|![PPO Iteration 400](/assets/projects/rl_learning/ppo/ppo_iter400.gif)|
 
-Here `iteration` denotes the number environment rollouts before updating the model, this is way it much lower than 16,000,000. We can see that the agent can already go forward at mid-training, by dragging its back knee. At the end of the training, it gets more efficient and its way of walking seems more natural.
+Here `iteration` denotes the number of environment rollouts before updating the model, this is why it is much lower than 16,000,000. We can see that the agent can already go forward at mid-training, by dragging its back knee. At the end of the training, it gets more efficient and its way of walking seems more natural and efficient.
